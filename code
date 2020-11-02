@@ -1,0 +1,107 @@
+radio.onReceivedNumberDeprecated(function (receivedNumber) {
+    if (receivedNumber == 1) {
+        basic.showLeds(`
+            # # # # #
+            # . # . #
+            # # # # #
+            # . # . #
+            # # # # #
+            `)
+        item = neopixel.create(DigitalPin.P1, 20, NeoPixelMode.RGBW)
+        basic.pause(100)
+        item.setBrightness(200)
+        item.showRainbow(1, 360)
+        item.show()
+        music.playTone(988, music.beat(BeatFraction.Breve))
+        basic.pause(500)
+        music.playTone(988, music.beat(BeatFraction.Breve))
+        basic.pause(500)
+        music.playTone(988, music.beat(BeatFraction.Breve))
+        basic.pause(500)
+    } else if (receivedNumber == 2) {
+        basic.showLeds(`
+            . . . . .
+            . . . . .
+            . . # . .
+            . # # # .
+            # # # # #
+            `)
+        item = neopixel.create(DigitalPin.P1, 20, NeoPixelMode.RGBW)
+        item.setBrightness(0)
+        item.showRainbow(1, 360)
+        item.show()
+        basic.pause(500)
+    } else if (receivedNumber == 3) {
+        basic.showLeds(`
+            # # # # #
+            . # # # .
+            . . # . .
+            . . . . .
+            . . . . .
+            `)
+        item = neopixel.create(DigitalPin.P1, 20, NeoPixelMode.RGBW)
+        item.setBrightness(0)
+        item.showRainbow(1, 360)
+        item.show()
+        basic.pause(500)
+    } else if (receivedNumber == 4) {
+        basic.showLeds(`
+            . . . . .
+            . # # # .
+            . # . # .
+            . # # # .
+            . . . . .
+            `)
+        item = neopixel.create(DigitalPin.P1, 20, NeoPixelMode.RGBW)
+        item.setBrightness(0)
+        item.showRainbow(1, 360)
+        item.show()
+        basic.pause(500)
+    } else if (receivedNumber == 5) {
+        basic.showLeds(`
+            # . . . .
+            # # . . .
+            # # # . .
+            # # . . .
+            # . . . .
+            `)
+        item = neopixel.create(DigitalPin.P1, 20, NeoPixelMode.RGBW)
+        item.setBrightness(0)
+        item.showRainbow(1, 360)
+        item.show()
+        basic.pause(500)
+    } else if (receivedNumber == 6) {
+        basic.showLeds(`
+            . . . . #
+            . . . # #
+            . . # # #
+            . . . # #
+            . . . . #
+            `)
+        item = neopixel.create(DigitalPin.P1, 15, NeoPixelMode.RGBW)
+        item.setBrightness(0)
+        item.showRainbow(1, 360)
+        item.show()
+        basic.pause(500)
+    }
+})
+input.onGesture(Gesture.LogoUp, function () {
+    radio.sendNumber(2)
+})
+input.onGesture(Gesture.TiltLeft, function () {
+    radio.sendNumber(5)
+})
+input.onGesture(Gesture.ScreenUp, function () {
+    radio.sendNumber(4)
+})
+input.onGesture(Gesture.Shake, function () {
+    radio.sendNumber(1)
+})
+input.onGesture(Gesture.TiltRight, function () {
+    radio.sendNumber(6)
+})
+input.onGesture(Gesture.LogoDown, function () {
+    radio.sendNumber(3)
+})
+let item: neopixel.Strip = null
+radio.setGroup(0)
